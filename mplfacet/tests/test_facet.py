@@ -46,13 +46,13 @@ def test_bad_options():
     assert_raises(ValueError, Facet, [y, x], x, nrows=2, ncols=2)
     assert_raises(ValueError, Facet, [y, x], x, nrows=2, ncols=4)
 
+
 def test_bad_key():
 
     #key and data not same shape
     key = np.array([1, 2, 3, 4])
     data = np.array([1, 2, 3])
     assert_raises(ValueError, Facet, key, data)
-
 
     #too many keys
     key = data
@@ -81,6 +81,7 @@ def test_subplot_dims():
     check(Facet(k2, data), 1, 3)
     check(Facet(k3, data), 2, 2)
 
+
 def test_facet_overflow():
     x = np.arange(51)
     assert_raises(ValueError, Facet, x, x)
@@ -88,6 +89,7 @@ def test_facet_overflow():
     x = np.arange(5)
     y = np.arange(11)
     assert_raises(ValueError, Facet, [x, y], x)
+
 
 def test_label_indexer():
     x = np.arange(5) + 1
@@ -98,6 +100,7 @@ def test_label_indexer():
     assert f._label([4]) == 'four'
     assert f._label([5]) == 'five'
 
+
 def test_label_caller():
     x = np.arange(5) + 1
     labeler = lambda x: 'a b c d e'.split()[x - 1]
@@ -107,6 +110,7 @@ def test_label_caller():
     assert f._label([3]) == 'c'
     assert f._label([4]) == 'd'
     assert f._label([5]) == 'e'
+
 
 def test_empty_facet():
     x = np.array([])

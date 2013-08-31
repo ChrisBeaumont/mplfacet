@@ -8,6 +8,8 @@ from .util import subplots, groupby
 
 
 FacetItem = namedtuple('FacetItem', 'axes data key label')
+
+
 def _axeswrap(self, key):
     target = getattr(self.axes, key)
 
@@ -19,7 +21,7 @@ FacetItem.__getattr__ = _axeswrap
 
 
 class Facet(object):
-    def __init__(self, keys, data, labeler = None,
+    def __init__(self, keys, data, labeler=None,
                  xlabel=None, ylabel=None, **subplot_opts):
         """
         Create a new facet object
@@ -125,7 +127,7 @@ class Facet(object):
         #if 1 key provided, just need nrows * ncols >= nfacets
         if nrows is None:
             if ncols is None:
-                nrows =  max(1, np.int(np.sqrt(sz)))
+                nrows = max(1, np.int(np.sqrt(sz)))
             else:
                 nrows = np.int(np.ceil(1. * sz / ncols))
         if ncols is None:
@@ -134,7 +136,6 @@ class Facet(object):
             raise ValueError("nrows (%i) and ncols (%i) not big enough "
                              "to plot %i facets" % (nrows, ncols, sz))
         return nrows, ncols
-
 
     @classmethod
     def from_labeled_array(cls, x, facet, data, **opts):
@@ -163,7 +164,6 @@ class Facet(object):
         if isinstance(data, basestring):
             data = [data]
 
-
         def labeler(key):
             return ', '.join('%s: %s' % (f, k) for f, k in zip(facet, key))
 
@@ -173,7 +173,6 @@ class Facet(object):
         data_val = [np.asarray(x[f]) for f in data]
 
         return cls(facet_val, data_val, **opts)
-
 
     @property
     def _subplots(self):
@@ -263,7 +262,6 @@ class Facet(object):
 
         #indexable
         return self._labeler[key]
-
 
     def __iter__(self):
         """

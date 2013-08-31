@@ -138,7 +138,7 @@ class Facet(object):
         return nrows, ncols
 
     @classmethod
-    def from_labeled_array(cls, x, facet, data, **opts):
+    def from_labels(cls, x, facet, data, **opts):
         """
         Build a Facet object from a Pandas DataFrame
 

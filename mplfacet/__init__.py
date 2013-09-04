@@ -1,1 +1,1 @@
-from facet import Facet
+from .facet import Facet
